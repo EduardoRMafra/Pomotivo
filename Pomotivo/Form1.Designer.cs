@@ -54,12 +54,12 @@ namespace Pomotivo
             this.btnMove = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtTimer = new System.Windows.Forms.TextBox();
-            this.txtCurrentTask = new System.Windows.Forms.TextBox();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.txtCurrent = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -240,7 +240,7 @@ namespace Pomotivo
             this.tableLayoutPanel3.Controls.Add(this.btnDel, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnModify, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnAdd, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(203, 139);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(200, 139);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -392,43 +392,68 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel5.Controls.Add(this.txtTimer, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.txtCurrentTask, 0, 0);
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel5.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtCurrent, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 381);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 32);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 31);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
-            // txtTimer
+            // txtCurrent
             // 
-            this.txtTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimer.Location = new System.Drawing.Point(366, 3);
-            this.txtTimer.Multiline = true;
-            this.txtTimer.Name = "txtTimer";
-            this.txtTimer.PlaceholderText = "99:99:99";
-            this.txtTimer.ReadOnly = true;
-            this.txtTimer.Size = new System.Drawing.Size(69, 26);
-            this.txtTimer.TabIndex = 1;
-            this.txtTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCurrent.Location = new System.Drawing.Point(3, 3);
+            this.txtCurrent.Multiline = true;
+            this.txtCurrent.Name = "txtCurrent";
+            this.txtCurrent.PlaceholderText = "Current task/break";
+            this.txtCurrent.ReadOnly = true;
+            this.txtCurrent.Size = new System.Drawing.Size(342, 25);
+            this.txtCurrent.TabIndex = 0;
+            this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtCurrentTask
+            // textBox1
             // 
-            this.txtCurrentTask.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCurrentTask.Location = new System.Drawing.Point(3, 3);
-            this.txtCurrentTask.Multiline = true;
-            this.txtCurrentTask.Name = "txtCurrentTask";
-            this.txtCurrentTask.PlaceholderText = "Current Task/Break";
-            this.txtCurrentTask.ReadOnly = true;
-            this.txtCurrentTask.Size = new System.Drawing.Size(357, 26);
-            this.txtCurrentTask.TabIndex = 0;
-            this.txtCurrentTask.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Location = new System.Drawing.Point(351, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "99:99:99";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(84, 25);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStart.Location = new System.Drawing.Point(348, 418);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(94, 29);
+            this.btnStart.TabIndex = 6;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.btnSave, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.btnOpen, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(272, 41);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(250, 34);
+            this.tableLayoutPanel6.TabIndex = 7;
             // 
             // btnOpen
             // 
@@ -437,26 +462,10 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpen.Location = new System.Drawing.Point(3, 3);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(119, 29);
-            this.btnOpen.TabIndex = 6;
+            this.btnOpen.Size = new System.Drawing.Size(119, 28);
+            this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.btnSave, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.btnOpen, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(272, 40);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(250, 35);
-            this.tableLayoutPanel6.TabIndex = 7;
             // 
             // btnSave
             // 
@@ -465,29 +474,18 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Location = new System.Drawing.Point(128, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(119, 29);
-            this.btnSave.TabIndex = 7;
+            this.btnSave.Size = new System.Drawing.Size(119, 28);
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // btnStart
-            // 
-            this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(352, 416);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(119, 30);
-            this.btnStart.TabIndex = 8;
-            this.btnStart.Text = "Start";
-            this.btnStart.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tableLayoutPanel6);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.tableLayoutPanel4);
@@ -538,12 +536,12 @@ namespace Pomotivo
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox txtTimer;
-        private System.Windows.Forms.TextBox txtCurrentTask;
-        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCurrent;
+        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnOpen;
     }
 }
 
