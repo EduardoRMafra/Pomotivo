@@ -43,6 +43,23 @@ namespace Pomotivo
                 ClearForm();
             }
         }
+        private void btnModify_Click(object sender, EventArgs e)
+        {
+            if (IsValid("Modify"))
+            {
+                TableInfo.ModifyTask(Convert.ToInt32(txtSequence.Text) - 1, txtTask.Text, txtQuantity.Text, txtPomo.Text);
+                ClearForm();
+            }
+        }
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if (IsValid("Del"))
+            {
+                TableInfo.DelTask(Convert.ToInt32(txtSequence.Text) - 1);
+                ClearForm();
+                txtTask.Focus();
+            }
+        }
         void DefaultInfo()
         {
             txtPomo.Text = taskTimeDefault;
@@ -71,15 +88,11 @@ namespace Pomotivo
                     {
                         txtQuantity.Text = "1";
                     }
-                    if (txtPomo.Text == "" || int.Parse(txtPomo.Text) <= 0)
-                    {
-                        txtPomo.Text = taskTimeDefault;
-                    }
                     break;
 
                 case "Modify":
-
-                    if (txtTask.Text == "")
+                    task = txtTask.Text.Trim();
+                    if (task == "")
                     {
                         MessageBox.Show("Task description is needed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtTask.Focus();
@@ -88,6 +101,12 @@ namespace Pomotivo
                     else if (txtSequence.Text == "")
                     {
                         MessageBox.Show("Sequence number is needed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSequence.Focus();
+                        result = false;
+                    }
+                    else if(Convert.ToInt32(txtSequence.Text) - 1 <= 0)
+                    {
+                        MessageBox.Show("This task don't exist or can't be modify!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
                         result = false;
                     }
@@ -112,7 +131,13 @@ namespace Pomotivo
                         txtSequence.Focus();
                         result = false;
                     }
-                    break;
+                    else if (Convert.ToInt32(txtSequence.Text) - 1 == 0 && timer1.Enabled == true)
+                    {
+                        MessageBox.Show("This task can't be deleted on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSequence.Focus();
+                        result = false;
+                    }
+                        break;
 
                 case "Move":
                     if (txtFrom.Text == "")
@@ -153,6 +178,12 @@ namespace Pomotivo
                     }
                     break;
             }
+
+            if (txtPomo.Text == "" || int.Parse(txtPomo.Text) <= 0)
+            {
+                txtPomo.Text = taskTimeDefault;
+            }
+
             return result;
         }
         //limpa todos os text boxes
