@@ -41,6 +41,7 @@ namespace Pomotivo
             {
                 TableInfo.AddNewTask(Convert.ToInt32("0" + txtSequence.Text), txtTask.Text, txtQuantity.Text,txtPomo.Text);
                 ClearForm();
+                txtTask.Focus();
             }
         }
         private void btnModify_Click(object sender, EventArgs e)
@@ -49,6 +50,7 @@ namespace Pomotivo
             {
                 TableInfo.ModifyTask(Convert.ToInt32(txtSequence.Text) - 1, txtTask.Text, txtQuantity.Text, txtPomo.Text);
                 ClearForm();
+                txtTask.Focus();
             }
         }
         private void btnDel_Click(object sender, EventArgs e)
@@ -56,6 +58,15 @@ namespace Pomotivo
             if (IsValid("Del"))
             {
                 TableInfo.DelTask(Convert.ToInt32(txtSequence.Text) - 1);
+                ClearForm();
+                txtTask.Focus();
+            }
+        }
+        private void btnMove_Click(object sender, EventArgs e)
+        {
+            if (IsValid("Move"))
+            {
+                TableInfo.MoveTask(Convert.ToInt32(txtFrom.Text) - 1, Convert.ToInt32(txtTo.Text) - 1);
                 ClearForm();
                 txtTask.Focus();
             }
@@ -174,6 +185,12 @@ namespace Pomotivo
                     {
                         MessageBox.Show("To number is invalid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtTo.Focus();
+                        result = false;
+                    }
+                    else if (Convert.ToInt32(txtFrom.Text) - 1 == 0 && timer1.Enabled == true || Convert.ToInt32(txtTo.Text) - 1 == 0 && timer1.Enabled == true)
+                    {
+                        MessageBox.Show("This task can't be moved on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtFrom.Focus();
                         result = false;
                     }
                     break;

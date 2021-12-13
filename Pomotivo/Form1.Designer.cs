@@ -365,6 +365,7 @@ namespace Pomotivo
             this.btnMove.TabIndex = 4;
             this.btnMove.Text = "Move";
             this.btnMove.UseVisualStyleBackColor = true;
+            this.btnMove.Click += new System.EventHandler(this.btnMove_Click);
             // 
             // dataGridView1
             // 

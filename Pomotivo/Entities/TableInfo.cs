@@ -54,5 +54,23 @@ namespace Pomotivo.Entities
                 }
             }
         }
+        public static void MoveTask(int from, int to)
+        {
+            string[] row1 = new string[dt.Rows[from].ItemArray.Length];
+            string[] row2 = new string[dt.Rows[to].ItemArray.Length];
+
+            for (int i = 0; i < row1.Length; i++)
+            {
+                row1[i] = dt.Rows[from][i].ToString();
+                row2[i] = dt.Rows[to][i].ToString();
+            }
+
+            dt.Rows[from][1] = row2[1];
+            dt.Rows[from][2] = Convert.ToInt32(row2[2]);
+            dt.Rows[from][3] = Convert.ToInt32(row2[3]);
+            dt.Rows[to][1] = row1[1];
+            dt.Rows[to][2] = Convert.ToInt32(row1[2]);
+            dt.Rows[to][3] = Convert.ToInt32(row1[3]);
+        }
     }
 }
