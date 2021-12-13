@@ -18,5 +18,14 @@ namespace Pomotivo.Entities
             dt.Columns.Add("Quantity", typeof(int));
             dt.Columns.Add("Time", typeof(double));
         }
+
+        public static void AddNewTask(int id, string txtTask, string txtQuantity, string txtTime)
+        {
+            //adiciona uma nova linha apenas se a caixa de id estiver vazia
+            if(id == 0)
+            {
+                dt.Rows.Add(dt.Rows.Count + 1, txtTask, txtQuantity, txtTime);
+            }
+        }
     }
 }
