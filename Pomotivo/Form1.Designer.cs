@@ -55,7 +55,7 @@ namespace Pomotivo
             this.btnMove = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTimer = new System.Windows.Forms.TextBox();
             this.txtCurrent = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -399,7 +399,7 @@ namespace Pomotivo
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
-            this.tableLayoutPanel5.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.txtTimer, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtCurrent, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 381);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -408,19 +408,19 @@ namespace Pomotivo
             this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 31);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
-            // textBox1
+            // txtTimer
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(351, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "99:99:99";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(84, 25);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTimer.Location = new System.Drawing.Point(351, 3);
+            this.txtTimer.Multiline = true;
+            this.txtTimer.Name = "txtTimer";
+            this.txtTimer.PlaceholderText = "99:99:99";
+            this.txtTimer.ReadOnly = true;
+            this.txtTimer.Size = new System.Drawing.Size(84, 25);
+            this.txtTimer.TabIndex = 1;
+            this.txtTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCurrent
             // 
@@ -446,6 +446,7 @@ namespace Pomotivo
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -484,6 +485,11 @@ namespace Pomotivo
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -542,7 +548,7 @@ namespace Pomotivo
         private System.Windows.Forms.Button btnMove;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTimer;
         private System.Windows.Forms.TextBox txtCurrent;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;

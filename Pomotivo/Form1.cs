@@ -13,9 +13,12 @@ namespace Pomotivo
 {
     public partial class Form1 : Form
     {
-        string taskTimeDefault = "25";
-        string smallBreakDefault = "5";
-        string longBreakDefault = "30";
+        string taskTimeDefault = "25";  //minutos padrão da tarefa
+        string smallBreakDefault = "5"; //minutos padrão do intervalo pequeno
+        string longBreakDefault = "30"; //minutos padrão do intervalo grande
+        int qtBreaks = 0;   //quantidade de intervalos, depois de 3 acontece um longo
+        bool b; //se está no intervalo
+        Time CurrentTimer = new Time(0,0,0);    //iniciando a classe de contador zerado
         public Form1()
         {
             InitializeComponent();
@@ -24,8 +27,8 @@ namespace Pomotivo
 
         public void InitializeProgram()
         {
-            DefaultInfo();
-            StartTable();
+            DefaultInfo();  //chama a função DefaultInfo que ao abrir o programa atribui os valores padrão para a tarefa e para os intervalos
+            StartTable();   //chama a função que inicia a tabela
         }
         public void StartTable()
         {
@@ -34,14 +37,15 @@ namespace Pomotivo
             //exibe a tabela no dataGrid
             dataGridView1.DataSource = TableInfo.dt;
         }
-
+        //---------------------------------------------------Funções de interação de Botões-------------------------------------------------------
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (IsValid("Add"))
+            if (IsValid("Add")) // IsValid verifica se os campos necessarios para chamar proxima função está preenchida corretamente
             {
+                //chama a função da classe TableInfo para adicionar uma nova tarefa na tabela
                 TableInfo.AddNewTask(Convert.ToInt32("0" + txtSequence.Text), txtTask.Text, txtQuantity.Text,txtPomo.Text);
-                ClearForm();
-                txtTask.Focus();
+                ClearForm();    //limpa todos os campos
+                txtTask.Focus();    //da destaque ao campo da tarefa
             }
         }
         private void btnModify_Click(object sender, EventArgs e)
@@ -71,6 +75,145 @@ namespace Pomotivo
                 txtTask.Focus();
             }
         }
+
+        //Ao pressionar o botão Start
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            //verifica se o contador está ativo ou não
+            if (timer1.Enabled == false)
+            {
+                if (txtCurrent.Text == "" || txtTimer.Text == "")   //se a tarefa atual ou o tempo estiverem vazios verifica se existem tarefas na tabela
+                {
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        UpdateTimer(Convert.ToInt32(dataGridView1.Rows[0].Cells[3].Value), b);  //manda para a função UpdateTimer o tempo da tarefa e se é ou não intervalo
+                        btnStart.Text = "Pause";
+                    }
+                    else   //Se não existem tarefas manda um aviso
+                    {
+                        MessageBox.Show("Has no tasks! Add news", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnStart.Text = "Start";
+                    }
+                }
+                else if (dataGridView1.Rows.Count > 0)  //se existem tarefas ativa o contador
+                {
+                    timer1.Enabled = true;
+                    btnStart.Text = "Pause";
+
+                    //verifica se a tarefa atual do timer não é a mesma da tabela e se não está em intervalo
+                    if (txtCurrent.Text != dataGridView1.Rows[0].Cells[1].Value.ToString() && txtCurrent.Text != "Break")
+                    {
+                        UpdateTimer(Convert.ToInt32(dataGridView1.Rows[0].Cells[3].Value), b);  //atualiza o timer
+                    }
+                }
+            }
+            else   //se o contador estiver ativo desativa
+            {
+                timer1.Enabled = false;
+                btnStart.Text = "Start";
+            }
+        }
+        //--------------------------------------------------------------------------------------------------------------------------
+        void UpdateTimer(int StartTimer, bool bk)
+        {
+            int tempMM = StartTimer;
+            int tempHH = 0;
+            if (!bk)    //Se não ser intervalo atribui o nome da tarefa para o txtCurrent
+            {
+                txtCurrent.Text = dataGridView1.Rows[0].Cells[1].Value.ToString();
+            }
+            else       //se for atribui o nome Break para o txtCurrent
+            {
+                txtCurrent.Text = "Break";
+            }
+
+            while (tempMM >= 60)    //converte cada 60min em 1hora
+            {
+                tempMM -= 60;
+                tempHH += 1;
+            }
+            CurrentTimer = new Time(tempHH, tempMM, 0); //CurrentTimer recebe o tempo informado
+            timer1.Enabled = true;  //contador habilitado
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //a cada segundo enquanto o timer estiver habilitado
+            Time.StartTimer();  //diminui um segundo e mantem o formato de contador
+            txtTimer.Text = CurrentTimer.ToString();    //apresenta o tempo atual no txtTimer
+            if(CurrentTimer.ToString() == "0:0:0")  //se o tempo acabar desabilita o contador
+            {
+                timer1.Enabled = false;
+
+                if (b == false) //se tiver acabado uma tarefa
+                {
+                    //se o usuario deseja ou não fazer o intervalo
+                    SkipQuestion();
+                }
+                else            //se acabou um intervalo
+                {
+                    if (MessageBox.Show("The break is over! Start the task", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+                        b = false;  //intervalo recebe false
+
+                        if (dataGridView1.Rows.Count > 0)   //se ainda tiver tarefas na lista pega o tempo da tarefa na lista e atualiza o contador
+                        {
+                            UpdateTimer(Convert.ToInt32(dataGridView1.Rows[0].Cells[3].Value), b);
+                        }
+                        else       //se não tiver mais tarefas manda um aviso
+                        {
+                            MessageBox.Show("Has no tasks! Add news", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            btnStart.Text = "Start";
+                        }
+                    }
+                }
+            }
+        }
+        void SkipQuestion() //atualiza a quantidade de tarefas e pergunta se o usuario deseja fazer o intervalo ou pular
+        {
+            if (MessageBox.Show(txtCurrent.Text + "is over! Start break", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                b = true;
+                TableInfo.QuantityTask();
+                qtBreaks++;
+
+                if (qtBreaks < 4)
+                {
+                    UpdateTimer(Convert.ToInt32(txtSmallBreak.Text), b);
+                }
+                else
+                {
+                    UpdateTimer(Convert.ToInt32(txtLongBreak.Text), b);
+                    qtBreaks = 0;
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure that you want skip this break?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    TableInfo.QuantityTask();
+                    qtBreaks++;
+
+                    if (qtBreaks >= 4)
+                    {
+                        qtBreaks = 0;
+                    }
+
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        UpdateTimer(Convert.ToInt32(dataGridView1.Rows[0].Cells[3].Value), b);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Has no tasks! Add news", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnStart.Text = "Start";
+                    }
+                }
+                else       // caso o usuario responda não para as perguntas ela pergunta novamente
+                {
+                    SkipQuestion();
+                }
+            }
+        }
         void DefaultInfo()
         {
             txtPomo.Text = taskTimeDefault;
@@ -79,7 +222,7 @@ namespace Pomotivo
 
             txtTask.Select();
         }
-        //verifica se as ações na tabela são validas e corrige para valores padrão
+        //verifica se as ações na tabela são validas e quando possivel corrige para valores padrão
         bool IsValid(string btnName)
         {
             bool result = true;
