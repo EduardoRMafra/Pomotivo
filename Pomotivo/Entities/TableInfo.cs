@@ -53,11 +53,7 @@ namespace Pomotivo.Entities
             {
                 dt.Rows.RemoveAt(id);
 
-                //organiza novamente o numero das posições das tarefas
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    dt.Rows[i]["Sequence"] = i + 1;
-                }
+                SequenceTable();// coloca os numeros das tarefas com base na posição delas na tabela
             }
         }
         public static void MoveTask(int from, int to)
@@ -96,6 +92,15 @@ namespace Pomotivo.Entities
             else
             {
                 DelTask(0);
+            }
+        }
+
+        public static void SequenceTable()
+        {
+            //organiza novamente o numero das posições das tarefas
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dt.Rows[i]["Sequence"] = i + 1;
             }
         }
     }

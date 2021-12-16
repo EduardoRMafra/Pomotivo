@@ -113,6 +113,36 @@ namespace Pomotivo
                 btnStart.Text = "Start";
             }
         }
+
+        //Ao pressionar o botão abrir
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            if (timer1.Enabled == true) //caso o contador estiver funcionando manda uma mensagem de erro
+            {
+                MessageBox.Show("This function can't be used on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if(openFileDialog1.ShowDialog() == DialogResult.OK) //ao clicar ok na janela de abrir
+            {
+                if (Open.OpenTable(openFileDialog1.FileName))   //chama a função open que verifica se a tabela está com os dados corretos
+                {
+                    dataGridView1.DataSource = TableInfo.dt;    //atualiza os dados.
+                }
+                else  //caso o arquivo não possa ser aberto
+                {
+                    MessageBox.Show("Table Formate Incorrect!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+            }
+        }
+        //botão salvar
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)    //ao pressionar ok salva a tabela em excel
+            {
+                Save.SaveTable(saveFileDialog1.FileName);
+            }
+        }
         //--------------------------------------------------------------------------------------------------------------------------
         void UpdateTimer(int StartTimer, bool bk)
         {
