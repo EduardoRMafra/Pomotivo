@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Media;
 
 namespace Pomotivo.Entities
 {
@@ -11,21 +7,26 @@ namespace Pomotivo.Entities
         public static int HH; 
         public static int MM;
         public static int SS;
+        static SoundPlayer alarm = new SoundPlayer();
 
         public Time(int hh, int mm,int ss)
         {
             HH = hh;
             MM = mm;
             SS = ss;
+            alarm.Stream = Properties.Resources.alarmClock;
         }
         public static void StartTimer() //diminui 1 segundo e converte as horas em minutos e os minutos em segundos
         {
+            SS--;
+
             if (HH <= 0 && MM <= 0 && SS <= 0)
             {
                 HH = 0;
                 MM = 0;
                 SS = 0;
 
+                alarm.Play();
             }
             else if (SS <= 0 && MM > 0)
             {
@@ -38,8 +39,6 @@ namespace Pomotivo.Entities
                 MM = 59;
                 SS = 59;
             }
-            
-            SS--;
         }
         public override string ToString()
         {
