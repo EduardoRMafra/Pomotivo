@@ -123,6 +123,7 @@ namespace Pomotivo
             this.txtPomo.Name = "txtPomo";
             this.txtPomo.Size = new System.Drawing.Size(63, 28);
             this.txtPomo.TabIndex = 2;
+            this.txtPomo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPomo_KeyPress);
             // 
             // txtSmallBreak
             // 
@@ -134,6 +135,7 @@ namespace Pomotivo
             this.txtSmallBreak.Name = "txtSmallBreak";
             this.txtSmallBreak.Size = new System.Drawing.Size(63, 29);
             this.txtSmallBreak.TabIndex = 3;
+            this.txtSmallBreak.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSmallBreak_KeyPress);
             // 
             // txtLongBreak
             // 
@@ -145,6 +147,7 @@ namespace Pomotivo
             this.txtLongBreak.Name = "txtLongBreak";
             this.txtLongBreak.Size = new System.Drawing.Size(64, 29);
             this.txtLongBreak.TabIndex = 4;
+            this.txtLongBreak.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLongBreak_KeyPress);
             // 
             // tableLayoutPanel2
             // 
@@ -180,6 +183,7 @@ namespace Pomotivo
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(29, 29);
             this.txtQuantity.TabIndex = 5;
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             // 
             // label5
             // 
@@ -232,6 +236,7 @@ namespace Pomotivo
             this.txtSequence.Name = "txtSequence";
             this.txtSequence.Size = new System.Drawing.Size(29, 29);
             this.txtSequence.TabIndex = 1;
+            this.txtSequence.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSequence_KeyPress);
             // 
             // tableLayoutPanel3
             // 
@@ -322,6 +327,7 @@ namespace Pomotivo
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(34, 32);
             this.txtTo.TabIndex = 3;
+            this.txtTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTo_KeyPress);
             // 
             // label7
             // 
@@ -355,6 +361,7 @@ namespace Pomotivo
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(34, 32);
             this.txtFrom.TabIndex = 1;
+            this.txtFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFrom_KeyPress);
             // 
             // btnMove
             // 

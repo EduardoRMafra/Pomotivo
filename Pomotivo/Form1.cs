@@ -385,5 +385,43 @@ namespace Pomotivo
             txtFrom.Clear();
             txtTo.Clear();
         }
+        //Impedir que o usuário consiga colocar letras em locais que devem aceitar apenas números
+        void OnlyNumbers(KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (!char.IsDigit(ch) && ch != Convert.ToChar(Keys.Delete) && ch != Convert.ToChar(Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPomo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtSmallBreak_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtLongBreak_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtSequence_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtFrom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
+        private void txtTo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            OnlyNumbers(e);
+        }
     }
 }
