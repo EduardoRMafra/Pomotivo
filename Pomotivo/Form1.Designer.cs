@@ -399,7 +399,7 @@ namespace Pomotivo
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 148);
+            this.dataGridView1.Size = new System.Drawing.Size(776, 173);
             this.dataGridView1.TabIndex = 4;
             // 
             // tableLayoutPanel5
@@ -411,7 +411,7 @@ namespace Pomotivo
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel5.Controls.Add(this.txtTimer, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtCurrent, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 381);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 406);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -450,7 +450,7 @@ namespace Pomotivo
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(348, 418);
+            this.btnStart.Location = new System.Drawing.Point(348, 443);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(94, 29);
             this.btnStart.TabIndex = 6;
@@ -460,6 +460,8 @@ namespace Pomotivo
             // 
             // tableLayoutPanel6
             // 
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -517,7 +519,7 @@ namespace Pomotivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 475);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tableLayoutPanel5);
