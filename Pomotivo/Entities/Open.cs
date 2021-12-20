@@ -17,7 +17,7 @@ namespace Pomotivo.Entities
                 {
                     da.Fill(dtTemp);    //preenche a tabela temp
                     //verifica se as colunas da tabela temporaria são validas
-                    if (dtTemp.Columns[0].ColumnName == "Sequence" && dtTemp.Columns[1].ColumnName == "Task" && dtTemp.Columns[2].ColumnName == "Quantity" && dtTemp.Columns[3].ColumnName == "Time Left")
+                    if (dtTemp.Columns[0].ColumnName == "Sequence" && dtTemp.Columns[1].ColumnName == "Task" && dtTemp.Columns[2].ColumnName == "Quantity" && dtTemp.Columns[3].ColumnName == "Time")
                     {
                         //verifica se o formato dos valores na tabela temp são validos
                         for(int i = 0; i < dtTemp.Rows.Count; i++)
