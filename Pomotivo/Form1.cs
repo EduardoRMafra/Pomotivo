@@ -280,7 +280,7 @@ namespace Pomotivo
                         txtSequence.Focus();
                         result = false;
                     }
-                    else if(Convert.ToInt32(txtSequence.Text) - 1 <= 0)
+                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0 || timer1.Enabled == true && Convert.ToInt32(txtSequence.Text) - 1 == 0)
                     {
                         MessageBox.Show("This task don't exist or can't be modify!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
@@ -295,19 +295,20 @@ namespace Pomotivo
                     break;
 
                 case "Del":
-                    if (dataGridView1.Rows.Count < Convert.ToInt32(txtSequence.Text))
-                    {
-                        MessageBox.Show("Sequence number is invalid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtSequence.Focus();
-                        result = false;
-                    }
-                    else if (txtSequence.Text == "")
+
+                    if (txtSequence.Text == "")
                     {
                         MessageBox.Show("Sequence number is needed!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
                         result = false;
                     }
-                    else if (Convert.ToInt32(txtSequence.Text) - 1 == 0 && timer1.Enabled == true)
+                    else if (dataGridView1.Rows.Count < Convert.ToInt32(txtSequence.Text))
+                    {
+                        MessageBox.Show("Sequence number is invalid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSequence.Focus();
+                        result = false;
+                    }
+                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0 || Convert.ToInt32(txtSequence.Text) - 1 == 0 && timer1.Enabled == true)
                     {
                         MessageBox.Show("This task can't be deleted on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
