@@ -86,7 +86,7 @@ namespace Pomotivo
             this.tableLayoutPanel1.Controls.Add(this.txtPomo, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtSmallBreak, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtLongBreak, 2, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(546, 23);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(472, 23);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -134,6 +134,7 @@ namespace Pomotivo
             this.txtSmallBreak.Location = new System.Drawing.Point(95, 37);
             this.txtSmallBreak.Multiline = true;
             this.txtSmallBreak.Name = "txtSmallBreak";
+            this.txtSmallBreak.PlaceholderText = "Small";
             this.txtSmallBreak.Size = new System.Drawing.Size(63, 29);
             this.txtSmallBreak.TabIndex = 3;
             this.txtSmallBreak.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSmallBreak_KeyPress);
@@ -146,6 +147,7 @@ namespace Pomotivo
             this.txtLongBreak.Location = new System.Drawing.Point(164, 37);
             this.txtLongBreak.Multiline = true;
             this.txtLongBreak.Name = "txtLongBreak";
+            this.txtLongBreak.PlaceholderText = "Long";
             this.txtLongBreak.Size = new System.Drawing.Size(64, 29);
             this.txtLongBreak.TabIndex = 4;
             this.txtLongBreak.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLongBreak_KeyPress);
@@ -171,7 +173,7 @@ namespace Pomotivo
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(776, 35);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(702, 35);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // txtQuantity
@@ -179,9 +181,10 @@ namespace Pomotivo
             this.txtQuantity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtQuantity.Location = new System.Drawing.Point(744, 3);
+            this.txtQuantity.Location = new System.Drawing.Point(670, 3);
             this.txtQuantity.Multiline = true;
             this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.PlaceholderText = "n°";
             this.txtQuantity.Size = new System.Drawing.Size(29, 29);
             this.txtQuantity.TabIndex = 5;
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
@@ -190,7 +193,7 @@ namespace Pomotivo
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(670, 7);
+            this.label5.Location = new System.Drawing.Point(596, 7);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 20);
             this.label5.TabIndex = 4;
@@ -204,7 +207,8 @@ namespace Pomotivo
             this.txtTask.Location = new System.Drawing.Point(188, 3);
             this.txtTask.Multiline = true;
             this.txtTask.Name = "txtTask";
-            this.txtTask.Size = new System.Drawing.Size(470, 29);
+            this.txtTask.PlaceholderText = "Task Description";
+            this.txtTask.Size = new System.Drawing.Size(396, 29);
             this.txtTask.TabIndex = 3;
             // 
             // label4
@@ -235,6 +239,7 @@ namespace Pomotivo
             this.txtSequence.Location = new System.Drawing.Point(93, 3);
             this.txtSequence.Multiline = true;
             this.txtSequence.Name = "txtSequence";
+            this.txtSequence.PlaceholderText = "n°";
             this.txtSequence.Size = new System.Drawing.Size(29, 29);
             this.txtSequence.TabIndex = 1;
             this.txtSequence.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSequence_KeyPress);
@@ -254,7 +259,7 @@ namespace Pomotivo
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(435, 38);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(361, 38);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // btnDel
@@ -262,9 +267,9 @@ namespace Pomotivo
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(293, 3);
+            this.btnDel.Location = new System.Drawing.Point(243, 3);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(139, 32);
+            this.btnDel.Size = new System.Drawing.Size(115, 32);
             this.btnDel.TabIndex = 2;
             this.btnDel.Text = "Del";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -275,9 +280,9 @@ namespace Pomotivo
             this.btnModify.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModify.Location = new System.Drawing.Point(148, 3);
+            this.btnModify.Location = new System.Drawing.Point(123, 3);
             this.btnModify.Name = "btnModify";
-            this.btnModify.Size = new System.Drawing.Size(139, 32);
+            this.btnModify.Size = new System.Drawing.Size(114, 32);
             this.btnModify.TabIndex = 1;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
@@ -290,7 +295,7 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 32);
+            this.btnAdd.Size = new System.Drawing.Size(114, 32);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -315,7 +320,7 @@ namespace Pomotivo
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(435, 38);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(361, 38);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // txtTo
@@ -326,6 +331,7 @@ namespace Pomotivo
             this.txtTo.Location = new System.Drawing.Point(183, 3);
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
+            this.txtTo.PlaceholderText = "n°";
             this.txtTo.Size = new System.Drawing.Size(34, 32);
             this.txtTo.TabIndex = 3;
             this.txtTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTo_KeyPress);
@@ -360,6 +366,7 @@ namespace Pomotivo
             this.txtFrom.Location = new System.Drawing.Point(103, 3);
             this.txtFrom.Multiline = true;
             this.txtFrom.Name = "txtFrom";
+            this.txtFrom.PlaceholderText = "n°";
             this.txtFrom.Size = new System.Drawing.Size(34, 32);
             this.txtFrom.TabIndex = 1;
             this.txtFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFrom_KeyPress);
@@ -371,7 +378,7 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMove.Location = new System.Drawing.Point(223, 3);
             this.btnMove.Name = "btnMove";
-            this.btnMove.Size = new System.Drawing.Size(209, 32);
+            this.btnMove.Size = new System.Drawing.Size(135, 32);
             this.btnMove.TabIndex = 4;
             this.btnMove.Text = "Move";
             this.btnMove.UseVisualStyleBackColor = true;
@@ -399,7 +406,7 @@ namespace Pomotivo
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 173);
+            this.dataGridView1.Size = new System.Drawing.Size(702, 216);
             this.dataGridView1.TabIndex = 4;
             // 
             // tableLayoutPanel5
@@ -411,11 +418,11 @@ namespace Pomotivo
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel5.Controls.Add(this.txtTimer, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtCurrent, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 406);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(200, 449);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(438, 31);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(364, 31);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // txtTimer
@@ -423,7 +430,7 @@ namespace Pomotivo
             this.txtTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimer.Location = new System.Drawing.Point(351, 3);
+            this.txtTimer.Location = new System.Drawing.Point(277, 3);
             this.txtTimer.Multiline = true;
             this.txtTimer.Name = "txtTimer";
             this.txtTimer.PlaceholderText = "99:99:99";
@@ -442,7 +449,7 @@ namespace Pomotivo
             this.txtCurrent.Name = "txtCurrent";
             this.txtCurrent.PlaceholderText = "Current task/break";
             this.txtCurrent.ReadOnly = true;
-            this.txtCurrent.Size = new System.Drawing.Size(342, 25);
+            this.txtCurrent.Size = new System.Drawing.Size(268, 25);
             this.txtCurrent.TabIndex = 0;
             this.txtCurrent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -450,9 +457,9 @@ namespace Pomotivo
             // 
             this.btnStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStart.Location = new System.Drawing.Point(348, 443);
+            this.btnStart.Location = new System.Drawing.Point(306, 486);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(94, 29);
+            this.btnStart.Size = new System.Drawing.Size(101, 29);
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -471,7 +478,7 @@ namespace Pomotivo
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(250, 34);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(176, 34);
             this.tableLayoutPanel6.TabIndex = 7;
             // 
             // btnSave
@@ -479,9 +486,9 @@ namespace Pomotivo
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.Location = new System.Drawing.Point(128, 3);
+            this.btnSave.Location = new System.Drawing.Point(91, 3);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(119, 28);
+            this.btnSave.Size = new System.Drawing.Size(82, 28);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -494,7 +501,7 @@ namespace Pomotivo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpen.Location = new System.Drawing.Point(3, 3);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(119, 28);
+            this.btnOpen.Size = new System.Drawing.Size(82, 28);
             this.btnOpen.TabIndex = 0;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -519,7 +526,7 @@ namespace Pomotivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 475);
+            this.ClientSize = new System.Drawing.Size(726, 518);
             this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.tableLayoutPanel5);

@@ -36,7 +36,7 @@ namespace Pomotivo
             if (IsValid("Add")) // IsValid verifica se os campos necessarios para chamar proxima função está preenchida corretamente
             {
                 //chama a função da classe TableInfo para adicionar uma nova tarefa na tabela
-                TableInfo.AddNewTask(Convert.ToInt32("0" + txtSequence.Text), txtTask.Text, txtQuantity.Text,txtPomo.Text);
+                TableInfo.AddNewTask(txtTask.Text, txtQuantity.Text,txtPomo.Text);
                 ClearForm();    //limpa todos os campos
                 txtTask.Focus();    //da destaque ao campo da tarefa
             }
@@ -112,7 +112,8 @@ namespace Pomotivo
         {
             if (timer1.Enabled == true) //caso o contador estiver funcionando manda uma mensagem de erro
             {
-                MessageBox.Show("This function can't be used on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                btnStart.Focus();
+                MessageBox.Show("This function can't be used on this moment! Pause the timer before using the Open button", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if(openFileDialog1.ShowDialog() == DialogResult.OK) //ao clicar ok na janela de abrir
@@ -123,7 +124,7 @@ namespace Pomotivo
                 }
                 else  //caso o arquivo não possa ser aberto
                 {
-                    MessageBox.Show("Table Formate Incorrect!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Table Formate Incorrect! Check if you are trying to open the correct table", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -173,7 +174,7 @@ namespace Pomotivo
                 }
                 else            //se acabou um intervalo
                 {
-                    if (MessageBox.Show("The break is over! Start the task", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
+                    if (MessageBox.Show("The break is over! Start the task.", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK)
                     {
                         b = false;  //intervalo recebe false
 
@@ -183,7 +184,7 @@ namespace Pomotivo
                         }
                         else       //se não tiver mais tarefas manda um aviso
                         {
-                            MessageBox.Show("Has no tasks! Add news", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Has no tasks! Add news.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             btnStart.Text = "Start";
                         }
                     }
@@ -192,7 +193,7 @@ namespace Pomotivo
         }
         void SkipQuestion() //atualiza a quantidade de tarefas e pergunta se o usuario deseja fazer o intervalo ou pular
         {
-            if (MessageBox.Show(txtCurrent.Text + "is over! Start break", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show(txtCurrent.Text + " is over! Want to take a break?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 b = true;
                 TableInfo.QuantityTask();
@@ -226,7 +227,7 @@ namespace Pomotivo
                     }
                     else
                     {
-                        MessageBox.Show("Has no tasks! Add news", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Has no tasks! Add news.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         btnStart.Text = "Start";
                     }
                 }
@@ -280,16 +281,16 @@ namespace Pomotivo
                         txtSequence.Focus();
                         result = false;
                     }
-                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0 || timer1.Enabled == true && Convert.ToInt32(txtSequence.Text) - 1 == 0)
+                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0 || dataGridView1.Rows.Count < Convert.ToInt32(txtSequence.Text))
                     {
-                        MessageBox.Show("This task don't exist or can't be modify!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This task number doesn't exist!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
                         result = false;
                     }
-                    else if (dataGridView1.Rows.Count < Convert.ToInt32(txtSequence.Text))
+                    else if(timer1.Enabled == true && Convert.ToInt32(txtSequence.Text) - 1 == 0)
                     {
-                        MessageBox.Show("Sequence number is invalid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtSequence.Focus();
+                        MessageBox.Show("This task can't be modified right now! Pause the timer before using the Modify button on this task.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnStart.Focus();
                         result = false;
                     }
                     break;
@@ -308,10 +309,16 @@ namespace Pomotivo
                         txtSequence.Focus();
                         result = false;
                     }
-                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0 || Convert.ToInt32(txtSequence.Text) - 1 == 0 && timer1.Enabled == true)
+                    else if (Convert.ToInt32(txtSequence.Text) - 1 < 0)
                     {
-                        MessageBox.Show("This task can't be deleted on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This number is invalid!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtSequence.Focus();
+                        result = false;
+                    }
+                    else if(Convert.ToInt32(txtSequence.Text) - 1 == 0 && timer1.Enabled == true)
+                    {
+                        MessageBox.Show("This task can't be deleted right now! Pause the timer before using the Del button on this task.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnStart.Focus();
                         result = false;
                     }
                         break;
@@ -355,7 +362,7 @@ namespace Pomotivo
                     }
                     else if (Convert.ToInt32(txtFrom.Text) - 1 == 0 && timer1.Enabled == true || Convert.ToInt32(txtTo.Text) - 1 == 0 && timer1.Enabled == true)
                     {
-                        MessageBox.Show("This task can't be moved on this moment!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This task can't be moved right now! Pause the timer before using the Move button on this task.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtFrom.Focus();
                         result = false;
                     }
